@@ -1,0 +1,25 @@
+def virusIndices(test_cases):
+    for p, v in test_cases:
+        matches = []
+        for i in range(len(p) - len(v) + 1):
+            mismatch_count = 0
+            for j in range(len(v)):
+                if p[i+j] != v[j]:
+                    mismatch_count += 1
+                if mismatch_count > 1:
+                    break
+            if mismatch_count <= 1:
+                matches.append(i)
+        if matches:
+            print(" ".join(map(str, matches)))
+        else:
+            print("No Match!")
+
+# Test cases
+test_cases = [
+    ("abbab", "ba"),
+    ("hello", "world"),
+    ("banana", "nan")
+]
+
+virusIndices(test_cases)
